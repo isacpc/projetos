@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>SliderBaseComMovimentação</title>
+</head>
+<script>
+    // LENGTH É COM TH SEU MERDA, perdeu tempo nessa idiotice kenga
+    var obj;
+    var guarda = new Array();
+    var atual;
+    var c=1;
+    var maxx;
+    var tecla;
+
+    function pre(){
+         for (var i = 0;i<5;i++){
+             guarda[i] = new Image();
+             guarda[i].src = "_img/s"+c+".png";
+             c++;
+         }
+    }
+
+    function inicia(){
+        pre();
+        obj = document.getElementById("passador");
+        obj.style.height = "300px";
+        obj.style.width = "1000px";
+        obj.style.border = "1px solid #000";
+        obj.style.borderRadius = "3px";
+        atual = 0;
+        document.addEventListener("keydown",mudaAtual);
+        coloca(atual);                         
+        maxx = guarda.length - 1;
+        // tmp = setInterval(mudaAtual,1000);
+    }
+
+    function mudaAtual(){
+        tecla = event.keyCode;
+        if (tecla == 37) {
+            if (atual <= 0) {
+                atual = maxx;
+            } else {
+                atual--;
+            }
+        } else if (tecla == 39) {
+            if (atual >= maxx) {
+                atual = 0;
+            } else {
+                atual++;
+            }
+        }
+        coloca(atual);
+    }
+
+    function coloca(x){
+        obj.style.backgroundImage = "url('"+guarda[x].src+"')";
+    }
+
+
+    window.addEventListener("load",inicia);
+</script>
+<body>
+    <div id="passador"></div>
+    <h1>Use as setas < ></h1>
+</html>

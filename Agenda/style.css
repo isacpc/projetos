@@ -1,0 +1,116 @@
+@media print{
+    #novaDiv{
+        visibility: hidden;
+    }
+
+    body{
+        width: 820px;
+    }
+
+    div#todoImg{
+        left: 50%;
+        transform: translateY(-50%);
+        position: relative;
+        width: 700px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+body{
+    background-color: #000;
+}
+
+table{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div#todoTab{
+    border: 1px solid #000;
+    width: 700px;
+}
+
+th{
+    background-color: #E5485A;
+}
+
+div#todoImg{
+    position: relative;
+    width: 720px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+}
+
+.hshort{
+    width: 10%;
+    border: 2px solid #000;
+}
+
+#tar{
+    width: 60%;
+    border: 2px solid #000;
+}
+
+td{
+    border: 2px solid #000;
+    text-align: center;
+    font-weight: bold;
+    background-color: #51AE9E;
+}
+
+
+#impressora, #mais, #menos{
+    cursor: pointer;
+    background-color: #3ABE19;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 25%;
+}
+
+#menos{
+    background-color: #f00;
+}
+
+#novaDiv{
+    display: inline-flex;
+    width: 22px;
+}
+
+input{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    cursor: initial;
+    background: #51AE9E;
+    z-index: 1;
+    outline: none;
+}
+
+.inputHi, .inputHf, .inputSaldo{
+    outline: none;
+}
+
+.inputSaldo{
+    color: rgba(41, 40, 40)
+}
+
+td img{
+    transform: translate(-250%,35%);
+    position: absolute;
+    cursor: pointer;
+    background-color: #3ABE19;
+    height: 10px;
+    border: 1px solid #000;
+    border-radius: 25%;
+    z-index: 2;
+}

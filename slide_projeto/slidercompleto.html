@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+
+        #dvSlider{
+            width: 1000px;
+            height: 300px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*centralização*/
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%/*left*/,50%/*top*/);       /*em relação a ele mesmo*/
+        }
+
+        .dvBtn{
+            border-radius: 5px;
+            border-style: groove;
+            height: 30%;
+            font-weight: bolder;
+            border-color: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            outline: none;
+        }
+
+        #dvportaLoad{
+            height: 5px;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            margin-top: 25%;
+        }
+
+        #dvLoad{
+            height: 100%;
+            width: 0%;
+            background-color: white;;
+        }
+    </style>
+    <script>
+        var guarda = new Array();
+        var slider;
+        var portaLoad;
+        var maxx = 5;
+        var atual;
+        var animaConta = 0;
+
+        function preCarrega(){
+            for (var i = 0;i<maxx;i++) {
+                guarda[i] = new Image();
+                guarda[i].src = "_img/s"+(i+1)+".png";
+            }
+            maxx = guarda.length-1;
+        }
+
+        function coloca(x){
+            slider.style.backgroundImage = "url('"+guarda[x].src+"')";
+        }
+
+        function inicia(){
+            preCarrega();
+            slider = document.getElementById("dvSlider");
+            portaLoad = document.getElementById("dvLoad");   
+            atual = 0;  
+            coloca(atual);
+            anima();
+        }
+
+        function trocaAtual(y){
+            animaConta = 0;
+            atual+=y;
+            if (atual > maxx){
+                atual = 0;
+            } else if (atual < 0) {
+                atual = maxx;
+            }
+            coloca(atual);
+        }
+
+        function anima(){
+            animaConta++;
+            if (animaConta >=500){
+                animaConta = 0;
+                trocaAtual(1);
+            } else {
+                portaLoad.style.width = animaConta/5 + "%"; 
+            }
+            requestAnimationFrame(anima);
+        }
+
+        window.addEventListener("load",inicia);
+    </script>
+</head>
+<body>
+    <div id="dvSlider">
+        <button class="dvBtn" onclick="trocaAtual(-1)"><</button>
+        <div id="dvportaLoad">
+            <div id="dvLoad"></div>
+        </div>
+        <button class="dvBtn" onclick="trocaAtual(1)">></button>
+    </div>
+    
+</body>
+</html>
